@@ -3,8 +3,9 @@
 #include "vrs_cv5.h"
 
 
-uint32_t AD_value;
-uint8_t Send;
+extern uint32_t AD_value;
+extern uint8_t Send;
+extern char* TX_Buffer;
 
 int main(void)
 {
@@ -26,7 +27,8 @@ int main(void)
 					sprintf(txt,"%d",AD_value);
 				}
 
-				PosliSlovo(txt);
+				TX_Buffer=txt;
+				USART_ITConfig(USART2,USART_IT_TXE,ENABLE);
 				Delay(1000000);
 
 	}

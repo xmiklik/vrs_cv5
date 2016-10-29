@@ -7,8 +7,10 @@ GPIO_InitTypeDef GPIO_InitStructure;
 NVIC_InitTypeDef NVIC_InitStructure;
 ADC_InitTypeDef ADC_InitStructure;
 USART_InitTypeDef USART_InitStructure;
-extern uint32_t AD_value;
-extern uint8_t Send;
+
+uint32_t AD_value;
+uint8_t Send;
+char* TX_Buffer;
 
 void Delay (int x){
 	for(int i=0;i<x;i++){}
@@ -141,5 +143,14 @@ void USART2_IRQHandler()
 		{
 			Send=!Send;
 		}
+	}
+	if(USART_GetFlagStatus(USART2,USART_FLAG_TXE))
+		{
+			if((*TX_Buffer)!=0)
+			{
+				USART_SendData(USART2,*TX_Buffer);
+				TX_Buffer++;
+			}
+			else USART_ITConfig(USART2,USART_IT_TXE,DISABLE);
 	}
 }
