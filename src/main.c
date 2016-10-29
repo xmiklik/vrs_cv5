@@ -4,15 +4,30 @@
 
 
 uint32_t AD_value;
-
+uint8_t Send;
 
 int main(void)
 {
+	float pom;
+	char txt[10];
+	Send=1;
 	GPIO_Inicializacia();
 	ADC_Inicializacia();
-
+	USART_Inicializacia();
 	while (1)
 	{
+		if(Send==0)
+				{
+					pom=AD_value*330/4096;
+					sprintf(txt,"%d.%dV",(int)pom/100,(int)pom%100);
+				}
+				else
+				{
+					sprintf(txt,"%d",AD_value);
+				}
+
+				PosliSlovo(txt);
+				Delay(1000000);
 
 	}
 	return 0;

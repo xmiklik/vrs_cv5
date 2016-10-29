@@ -10,5 +10,7 @@
 void Delay(int x);
 void GPIO_Inicializacia();
 void ADC_Inicializacia();
+void USART_Inicializacia();
+void PosliSlovo(char *text);
 
 #endif /* VRS_CV5_H_ */
