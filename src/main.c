@@ -22,11 +22,12 @@ int main(void)
 					pom=AD_value*330/4096;
 					sprintf(txt,"%d.%dV",(int)pom/100,(int)pom%100);
 				}
-				else
+		else
 				{
 					sprintf(txt,"%d",AD_value);
 				}
 
+				PosliSlovo(txt);	// Sucast ulohy 2
 				TX_Buffer=txt;
 				USART_ITConfig(USART2,USART_IT_TXE,ENABLE);
 				Delay(1000000);
