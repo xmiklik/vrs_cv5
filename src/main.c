@@ -27,7 +27,7 @@ int main(void)
 					sprintf(txt,"%d",AD_value);
 				}
 
-				PosliSlovo(txt);	// Sucast ulohy 2
+
 				TX_Buffer=txt;
 				USART_ITConfig(USART2,USART_IT_TXE,ENABLE);
 				Delay(1000000);

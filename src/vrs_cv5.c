@@ -21,7 +21,7 @@ void GPIO_Inicializacia()
 	/* Spusti hodiny na GPIOA periferii */
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
 
-	/* Nastavanie ADC  */
+	/* Nastavanie GPIO periferie  */
 	GPIO_StructInit(&GPIO_InitStructure);
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_AN;
 	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0;
